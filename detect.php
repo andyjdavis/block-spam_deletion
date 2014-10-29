@@ -51,6 +51,17 @@ function block_spam_deletion_message_is_spammy($message) {
         return true;
     }
 
+    // Look for words that may indicate spam.
+    if (!empty($CFG->block_spam_deletion_badwords)) {
+        $badwords = explode(',', $CFG->block_spam_deletion_badwords);
+        foreach ($badwords as $badword) {
+            $badword = trim($badword);
+            if (stripos($text, $badword) !== false) {
+                return true;
+            }
+        }
+    }
+
     return false;
 }
 
