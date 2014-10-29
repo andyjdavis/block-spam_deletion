@@ -73,5 +73,8 @@ class block_spam_deletion_detect_testcase extends basic_testcase {
             [1]: http://viagra.com
             [2]: http://freemoodlecourses.com/logo.jpg
             -->'));
+
+        // Text contains a spam word.
+        $this->assertTrue(block_spam_deletion_message_is_spammy('<p>buy cheap viagra</p>'));
     }
 }
